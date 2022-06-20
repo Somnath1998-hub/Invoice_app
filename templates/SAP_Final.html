@@ -1,0 +1,1706 @@
+<html>
+  <head>
+    <title>Analyze Invoice</title>
+    <link
+      rel="stylesheet"
+      href="https://us-as.gr-cdn.com/javascripts/core/lps/dist/reset-styles.146b8ec4963fecae9c0d.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://us-as.gr-cdn.com/javascripts/core/lps/dist/core-styles.51365b9560bf3abdc8cb.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://us-as.gr-cdn.com/javascripts/core/lps/dist/webform-styles.da452ed17aade0ce6acd.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://us-as.gr-cdn.com/images/common/templates/landing/207/1/css/style.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style id="def-mark" type="text/css">
+      html {
+        scroll-behavior: smooth;
+      }
+      .fileInput {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .loader {
+        border: 10px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 10px solid #3498db;
+        width: 100px;
+        height: 100px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+
+      #loader_properties {
+        display: none;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 50%;
+        z-index: 1000;
+        position: absolute;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      /* .spinner {
+        right: 0 !important;
+        z-index: 10000 !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: fixed !important;
+        cursor: pointer !important;
+        visibility: visible !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } */
+
+      #edi-19w6yj2 button div {
+        font-size: 31px;
+      }
+      #edi-4rbq3fr img {
+        width: 170px;
+        height: 120px;
+        left: 0px;
+        top: 0px;
+      }
+      #edi-4rbq3fr {
+        visibility: visible;
+        width: 160px;
+        height: 120px;
+        background: url("https://us-ms.gr-cdn.com/getresponse-yhHAU/photos/6e690452-65b0-496f-b494-5b8e9a5407fb.png")
+          0px 0px / 170px no-repeat;
+        top: 7px;
+        left: 410.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+
+      #edi-6u40bhz {
+        visibility: visible;
+        width: 350px;
+        height: auto;
+        top: 14px;
+        left: 619.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+      #edi-ai2zbon {
+        visibility: visible;
+        width: 350px;
+        height: auto;
+        top: 14px;
+        left: 315.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+      #section-d9pc8d2 [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-d9pc8d2 {
+        background-color: rgb(161, 169, 173);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 52px;
+        z-index: 2;
+        background-image: none;
+      }
+      #edi-1olvcdh {
+        visibility: visible;
+        width: 435px;
+        height: 43px;
+        top: 259px;
+        left: 272.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgb(230, 129, 0);
+        background-image: none;
+      }
+      #edi-37o6npj {
+        visibility: visible;
+        width: 890px;
+        height: auto;
+        top: 129px;
+        left: 45.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: center;
+      }
+      #edi-3fhahhu .text-content {
+        font-size: 32px;
+      }
+      #edi-3fhahhu {
+        visibility: visible;
+        width: 350px;
+        height: auto;
+        top: 70px;
+        left: 315.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+      #section-i5z7li8 [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-i5z7li8 {
+        background-color: rgb(255, 255, 255);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 354px;
+        z-index: 2;
+      }
+      #edi-nmkq799 {
+        visibility: visible;
+        width: 407px;
+        height: 47px;
+        top: 922px;
+        left: 286.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgb(230, 129, 0);
+        background-image: none;
+      }
+      #section-jzpybjb [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-jzpybjb {
+        background: url("https://us-ms.gr-cdn.com/getresponse-yhHAU/photos/9e9f74de-abba-40c5-8d96-15db56c32aad.png")
+          50% 50% / 976px no-repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 992px;
+        z-index: 2;
+      }
+      #edi-fjr8j5q .text-content {
+        font-size: 21px;
+      }
+
+      #edi-3835sjp .text-content {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      #edi-xurxx59 .text-content {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      #edi-ciqf0wm .text-content {
+        font-size: 21px;
+        line-height: 1.1;
+      }
+      #edi-fjr8j5qedi-fjr8j5q {
+        visibility: visible;
+        width: 486px;
+        height: auto;
+        top: 79px;
+        left: 3px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: left;
+      }
+      #edi-ciqf0wm {
+        visibility: visible;
+        width: 473px;
+        height: auto;
+        top: 77px;
+        left: 0.0124817px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: left;
+      }
+      #edi-3835sjp {
+        visibility: visible;
+        width: 350px;
+        height: auto;
+        top: 39px;
+        left: 560.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: center;
+      }
+      #edi-xurxx59 {
+        visibility: visible;
+        width: 350px;
+        height: auto;
+        top: 39px;
+        left: 72.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: center;
+      }
+      #edi-a3vtcbt {
+        visibility: visible;
+        width: 489px;
+        height: 448px;
+        border: none;
+        box-shadow: none;
+        top: 69px;
+        left: 490.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        border-radius: 0px;
+      }
+      #edi-4fwnvvw {
+        visibility: visible;
+        width: 486px;
+        height: 461px;
+        border: none;
+        box-shadow: none;
+        top: 69px;
+        left: 4.39999px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        border-radius: 0px;
+      }
+      #section-446f50v [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-446f50v {
+        background-color: rgb(236, 240, 242);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 612px;
+        z-index: 2;
+        background-image: none;
+      }
+      #edi-8daajpz img {
+        width: 378px;
+        height: 158px;
+        top: 0px;
+        left: 0px;
+      }
+      #edi-8daajpz {
+        visibility: visible;
+        width: 379px;
+        height: 172.95px;
+        background: url("https://us-ms.gr-cdn.com/getresponse-yhHAU/photos/ddadb922-a1c9-4e70-abbf-e741031597f1.jpg")
+          0px 0px / 378px no-repeat;
+        top: 159px;
+        left: 535.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+      }
+      #edi-yv0q413 .text-content {
+        font-size: 37px;
+        font-weight: bold;
+      }
+      #edi-yv0q413 {
+        visibility: visible;
+        width: 544px;
+        height: auto;
+        top: 19px;
+        left: 227.4px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: center;
+      }
+
+      #edi-9o5fj6a {
+        visibility: visible;
+        width: 491px;
+        height: auto;
+        top: 67px;
+        left: 8.01248px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: left;
+      }
+      #edi-p8h4pti {
+        visibility: visible;
+        width: 499px;
+        height: 410px;
+        border: none;
+        box-shadow: none;
+        top: 41px;
+        left: 0.399994px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        border-radius: 0px;
+      }
+      #section-8fiz0zt [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-8fiz0zt {
+        background-color: rgb(255, 255, 255);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 531px;
+        z-index: 2;
+        background-image: none;
+      }
+      #edi-isl6jvh button {
+        background-color: rgb(230, 129, 0);
+        background-image: none;
+        font-size: 16px;
+        width: 111px;
+        height: 42px;
+        border-radius: 40px;
+      }
+      #webform_text-ca1lywf {
+        height: 100%;
+        width: 100%;
+      }
+      #webform_label-ywhch6b {
+        height: 100%;
+        width: 100%;
+      }
+      #edi-fvb9cy7 {
+        top: 150px;
+        height: 60px;
+        z-index: 2;
+      }
+      #webform_text-2n8mu4g {
+        height: 100%;
+        width: 100%;
+      }
+      #webform_label-ws0lwcd {
+        height: 100%;
+        width: 100%;
+      }
+      #edi-8vt072f {
+        top: 75px;
+        height: 60px;
+        z-index: 2;
+      }
+      #edi-isl6jvh {
+        left: 105px;
+        top: 225px;
+        height: 60px;
+        width: 280px;
+        z-index: 2;
+        transform-origin: 0px 0px;
+      }
+      #webform_text-0tqal7h {
+        height: 100%;
+        width: 100%;
+      }
+
+      #edi-hcdw9i7 {
+        top: 0px;
+        height: 60px;
+        width: 307px;
+        z-index: 2;
+      }
+
+      #edi-kuupt4n {
+        /* height: 350px; */
+        /* width: 452px; */
+        visibility: visible;
+        top: 50px;
+        /* left: 500px; */
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+      #edi-md0m41e .text-content {
+        font-size: 18px;
+        text-shadow: none;
+        line-height: 1.4;
+      }
+      #edi-md0m41e {
+        visibility: visible;
+        width: 498px;
+        height: auto;
+        top: 70px;
+        left: 1.39999px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        text-align: left;
+      }
+      #edi-7pfh2k5 {
+        visibility: visible;
+        width: 499px;
+        height: 507px;
+        border: none;
+        box-shadow: none;
+        top: 40px;
+        left: 0px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        border-radius: 0px;
+      }
+      #section-4bki86n [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-4bki86n {
+        background-color: rgb(236, 240, 242);
+        visibility: visible;
+        top: auto;
+        left: auto;
+        transform-origin: 0px 0px;
+        position: relative;
+        height: 407px;
+        /* height: -webkit-fill-available; */
+        z-index: 2;
+        background-image: none;
+      }
+      #edi-19w6yj2 {
+        visibility: visible;
+        width: 291px;
+        height: 49px;
+        top: 395px;
+        left: 8.39999px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+        background-color: rgb(230, 129, 0);
+        background-image: none;
+      }
+      #edi-fm6qxkb {
+        visibility: visible;
+        width: 573px;
+        height: auto;
+        top: 291px;
+        left: 8.39999px;
+        transform-origin: 0px 0px;
+        z-index: 2;
+      }
+      #edi-zuncai4 {
+        top: 159px;
+        left: 8.39999px;
+        width: 955px;
+        height: auto;
+        z-index: 2;
+        transform-origin: 0px 0px;
+        text-align: left;
+      }
+
+      #section-sknsr1b [data-section="wrap"] {
+        width: 980px;
+      }
+      #section-sknsr1b {
+        height: 562px;
+        z-index: 2;
+        background-color: rgb(255, 255, 255);
+        background-image: url("https://us-ms.gr-cdn.com/getresponse-yhHAU/photos/e6070154-08e3-4dfe-b421-7ef701987374.jpg");
+      }
+
+      #edi-9o5fj6a .text-content {
+        font-size: 17px;
+        text-shadow: none;
+        line-height: 1.4;
+      }
+      .wrapper-progressBar {
+        width: 150%;
+      }
+
+      /* modal css starts */
+
+      /* Float cancel and delete buttons and add an equal width */
+      .cancelbtn,
+      .proceedbtn {
+        float: left;
+        width: 50%;
+      }
+
+      /* Add a color to the cancel button */
+      .cancelbtn {
+        background-color: #ccc;
+        color: black;
+      }
+
+      /* Add a color to the delete button */
+      .proceedbtn {
+        background-color: green;
+      }
+
+      /* Add padding and center-align text to the container */
+      .container {
+        padding: 30px;
+        text-align: center;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 25%;
+        top: 7px;
+        width: 50%; /* Full width */
+        /* height: 50%; Full height */
+        overflow: hidden; /* Enable scroll if needed */
+        /* background-color: #474e5d; */
+        padding-top: 50px;
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+
+      /* Style the horizontal ruler */
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+
+      /* The Modal Close Button (x) */
+      .close {
+        position: absolute;
+        right: 14px;
+        top: -8px;
+        font-size: 40px;
+        font-weight: bold;
+        color: #f1f1f1;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #f44336;
+        cursor: pointer;
+      }
+
+      /* Clear floats */
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+
+    <script type="text/javascript">
+      var grLpsInitialData = {
+        userId: "yhHAU",
+        google_adwords_id: "",
+        google_adwords_conversion_label: "",
+        country_phone_codes: JSON.parse(
+          '[{"cc":"af","code":"93","name":"Afghanistan","format":null},{"cc":"al","code":"355","name":"Albania","format":null},{"cc":"dz","code":"213","name":"Algeria","format":null},{"cc":"as","code":"1684","name":"American Samoa","format":"XXX-XXXX"},{"cc":"ad","code":"376","name":"Andorra","format":null},{"cc":"ao","code":"244","name":"Angola","format":null},{"cc":"ai","code":"1264","name":"Anguilla","format":"XXX-XXXX"},{"cc":"aq","code":"672","name":"Antarctica","format":null},{"cc":"ag","code":"1268","name":"Antigua & Barbuda","format":"XXX-XXXX"},{"cc":"ar","code":"54","name":"Argentina","format":null},{"cc":"am","code":"374","name":"Armenia","format":null},{"cc":"aw","code":"297","name":"Aruba","format":null},{"cc":"au","code":"61","name":"Australia","format":null},{"cc":"at","code":"43","name":"Austria","format":null},{"cc":"az","code":"994","name":"Azerbaijan","format":null},{"cc":"bs","code":"1242","name":"Bahamas","format":"XXX-XXXX"},{"cc":"bh","code":"973","name":"Bahrain","format":null},{"cc":"bd","code":"880","name":"Bangladesh","format":null},{"cc":"bb","code":"1246","name":"Barbados","format":null},{"cc":"by","code":"375","name":"Belarus","format":null},{"cc":"be","code":"32","name":"Belgium","format":null},{"cc":"bz","code":"501","name":"Belize","format":null},{"cc":"bj","code":"229","name":"Benin","format":null},{"cc":"bm","code":"1441","name":"Bermuda","format":"XXX-XXXX"},{"cc":"bt","code":"975","name":"Bhutan","format":null},{"cc":"bo","code":"591","name":"Bolivia","format":null},{"cc":"ba","code":"387","name":"Bosnia and Herzegovina","format":null},{"cc":"bw","code":"267","name":"Botswana","format":null},{"cc":"br","code":"55","name":"Brazil","format":null},{"cc":"io","code":"246","name":"British Indian Ocean Territory","format":null},{"cc":"bn","code":"673","name":"Brunei Darussalam","format":null},{"cc":"bg","code":"359","name":"Bulgaria","format":null},{"cc":"bf","code":"226","name":"Burkina Faso","format":null},{"cc":"bi","code":"257","name":"Burundi","format":null},{"cc":"kh","code":"855","name":"Cambodia","format":null},{"cc":"cm","code":"237","name":"Cameroon","format":null},{"cc":"ca","code":"1","name":"Canada","format":"(XXX) XXX-XXXX"},{"cc":"cv","code":"238","name":"Cape Verde","format":null},{"cc":"ky","code":"1345","name":"Cayman Islands","format":"XXX-XXXX"},{"cc":"cf","code":"236","name":"Central African Republic","format":null},{"cc":"td","code":"235","name":"Chad","format":null},{"cc":"cl","code":"56","name":"Chile","format":null},{"cc":"cn","code":"86","name":"China","format":null},{"cc":"cx","code":"61","name":"Christmas Island","format":null},{"cc":"cc","code":"61","name":"Cocos Islands (Keeling) ","format":null},{"cc":"co","code":"57","name":"Colombia","format":null},{"cc":"km","code":"269","name":"Comoros","format":null},{"cc":"cg","code":"242","name":"Congo","format":null},{"cc":"cd","code":"243","name":"Democratic Republic of the Congo","format":null},{"cc":"ck","code":"682","name":"Cook Islands","format":null},{"cc":"cr","code":"506","name":"Costa Rica","format":null},{"cc":"ci","code":"225","name":"Cote d\u0027Ivoire","format":null},{"cc":"hr","code":"385","name":"Croatia","format":null},{"cc":"cu","code":"53","name":"Cuba","format":null},{"cc":"cy","code":"357","name":"Cyprus","format":null},{"cc":"cz","code":"420","name":"Czech Republic","format":null},{"cc":"dk","code":"45","name":"Denmark","format":null},{"cc":"dj","code":"253","name":"Djibouti","format":null},{"cc":"dm","code":"1767","name":"Dominica","format":"XXX-XXXX"},{"cc":"do","code":"1809","name":"Dominican Republic","format":"XXX-XXXX"},{"cc":"do","code":"1829","name":"Dominican Republic","format":"XXX-XXXX"},{"cc":"do","code":"1849","name":"Dominican Republic","format":"XXX-XXXX"},{"cc":"ec","code":"593","name":"Ecuador","format":null},{"cc":"eg","code":"20","name":"Egypt","format":null},{"cc":"sv","code":"503","name":"El Salvador","format":null},{"cc":"gq","code":"240","name":"Equatorial Guinea","format":null},{"cc":"er","code":"291","name":"Eritrea","format":null},{"cc":"ee","code":"372","name":"Estonia","format":null},{"cc":"et","code":"251","name":"Ethiopia","format":null},{"cc":"fk","code":"500","name":"Falkland Islands (Malvinas)","format":null},{"cc":"fo","code":"298","name":"Faroe Islands","format":null},{"cc":"fj","code":"679","name":"Fiji","format":null},{"cc":"fi","code":"358","name":"Finland","format":null},{"cc":"fr","code":"33","name":"France","format":"X XX XX XX XX"},{"cc":"pf","code":"689","name":"French Polynesia","format":null},{"cc":"ga","code":"241","name":"Gabon","format":null},{"cc":"gm","code":"220","name":"Gambia","format":null},{"cc":"ge","code":"995","name":"Georgia","format":null},{"cc":"de","code":"49","name":"Germany","format":null},{"cc":"gh","code":"233","name":"Ghana","format":null},{"cc":"gi","code":"350","name":"Gibraltar","format":null},{"cc":"gr","code":"30","name":"Greece","format":null},{"cc":"gl","code":"299","name":"Greenland","format":null},{"cc":"gd","code":"1473","name":"Grenada","format":"XXX-XXXX"},{"cc":"gu","code":"1671","name":"Guam","format":"XXX-XXXX"},{"cc":"gt","code":"502","name":"Guatemala","format":null},{"cc":"gg","code":"441481","name":"Guernsey","format":null},{"cc":"gn","code":"224","name":"Guinea","format":null},{"cc":"gw","code":"245","name":"Guinea-bissau","format":null},{"cc":"gy","code":"592","name":"Guyana","format":null},{"cc":"ht","code":"509","name":"Haiti","format":null},{"cc":"hn","code":"504","name":"Honduras","format":null},{"cc":"hk","code":"852","name":"Hong Kong","format":"XXXX XXXX"},{"cc":"hu","code":"36","name":"Hungary","format":null},{"cc":"is","code":"354","name":"Iceland","format":null},{"cc":"in","code":"91","name":"India","format":"XXXXX-XXXXX"},{"cc":"id","code":"62","name":"Indonesia","format":null},{"cc":"ir","code":"98","name":"Islamic Republic of Iran","format":null},{"cc":"iq","code":"964","name":"Iraq","format":null},{"cc":"ie","code":"353","name":"Ireland","format":null},{"cc":"im","code":"441624","name":"Isle of man","format":null},{"cc":"il","code":"972","name":"Israel","format":null},{"cc":"it","code":"39","name":"Italy","format":null},{"cc":"jm","code":"1876","name":"Jamaica","format":"XXX-XXXX"},{"cc":"jp","code":"81","name":"Japan","format":null},{"cc":"je","code":"441534","name":"Jersey","format":null},{"cc":"jo","code":"962","name":"Jordan","format":null},{"cc":"kz","code":"7","name":"Kazakhstan","format":"(XXX) XXX XX XX"},{"cc":"ke","code":"254","name":"Kenya","format":null},{"cc":"ki","code":"686","name":"Kiribati","format":null},{"cc":"kp","code":"850","name":"Democratic People\u0027s Republic of Korea","format":null},{"cc":"kr","code":"82","name":"Republic of Korea","format":null},{"cc":"kw","code":"965","name":"Kuwait","format":null},{"cc":"kg","code":"996","name":"Kyrgyzstan","format":null},{"cc":"la","code":"856","name":"People\u0027s Democratic Republic of Lao","format":null},{"cc":"lv","code":"371","name":"Latvia","format":null},{"cc":"lb","code":"961","name":"Lebanon","format":null},{"cc":"ls","code":"266","name":"Lesotho","format":null},{"cc":"lr","code":"231","name":"Liberia","format":null},{"cc":"ly","code":"218","name":"Libya","format":null},{"cc":"li","code":"423","name":"Liechtenstein","format":null},{"cc":"lt","code":"370","name":"Lithuania","format":null},{"cc":"lu","code":"352","name":"Luxembourg","format":null},{"cc":"mo","code":"853","name":"Macao","format":null},{"cc":"mk","code":"389","name":"North Macedonia","format":null},{"cc":"mg","code":"261","name":"Madagascar","format":null},{"cc":"mw","code":"265","name":"Malawi","format":null},{"cc":"my","code":"60","name":"Malaysia","format":null},{"cc":"mv","code":"960","name":"Maldives","format":null},{"cc":"ml","code":"223","name":"Mali","format":null},{"cc":"mt","code":"356","name":"Malta","format":null},{"cc":"mh","code":"692","name":"Marshall Islands","format":null},{"cc":"mr","code":"222","name":"Mauritania","format":null},{"cc":"mu","code":"230","name":"Mauritius","format":null},{"cc":"yt","code":"262","name":"Mayotte","format":null},{"cc":"mx","code":"52","name":"Mexico","format":"XXX XXX XXXX"},{"cc":"fm","code":"691","name":"Federated States of Micronesia","format":null},{"cc":"md","code":"373","name":"Republic of Moldova","format":null},{"cc":"mc","code":"377","name":"Monaco","format":null},{"cc":"mn","code":"976","name":"Mongolia","format":null},{"cc":"me","code":"382","name":"Montenegro","format":null},{"cc":"ms","code":"1664","name":"Montserrat","format":"XXX-XXXX"},{"cc":"ma","code":"212","name":"Morocco","format":null},{"cc":"mz","code":"258","name":"Mozambique","format":null},{"cc":"mm","code":"95","name":"Myanmar","format":null},{"cc":"na","code":"264","name":"Namibia","format":null},{"cc":"nr","code":"674","name":"Nauru","format":null},{"cc":"np","code":"977","name":"Nepal","format":null},{"cc":"nl","code":"31","name":"Netherlands","format":null},{"cc":"an","code":"599","name":"Netherlands Antilles","format":null},{"cc":"nc","code":"687","name":"New Caledonia","format":null},{"cc":"nz","code":"64","name":"New Zealand","format":null},{"cc":"ni","code":"505","name":"Nicaragua","format":null},{"cc":"ne","code":"227","name":"Niger","format":null},{"cc":"ng","code":"234","name":"Nigeria","format":null},{"cc":"nu","code":"683","name":"Niue","format":null},{"cc":"mp","code":"1670","name":"Northern Mariana Islands","format":"XXX-XXXX"},{"cc":"no","code":"47","name":"Norway","format":null},{"cc":"om","code":"968","name":"Oman","format":null},{"cc":"pk","code":"92","name":"Pakistan","format":null},{"cc":"pw","code":"680","name":"Palau","format":null},{"cc":"ps","code":"970","name":"Occupied Palestinian Territory","format":null},{"cc":"pa","code":"507","name":"Panama","format":null},{"cc":"pg","code":"675","name":"Papua New Guinea","format":null},{"cc":"py","code":"595","name":"Paraguay","format":null},{"cc":"pe","code":"51","name":"Peru","format":null},{"cc":"ph","code":"63","name":"Philippines","format":null},{"cc":"pn","code":"64","name":"Pitcairn","format":null},{"cc":"pl","code":"48","name":"Poland","format":"XXX XXX XXX"},{"cc":"pt","code":"351","name":"Portugal","format":null},{"cc":"pr","code":"1787","name":"Puerto Rico","format":"XXX-XXXX"},{"cc":"pr","code":"1939","name":"Puerto Rico","format":"XXX-XXXX"},{"cc":"qa","code":"974","name":"Qatar","format":null},{"cc":"re","code":"262","name":"R\u00e9union","format":null},{"cc":"ro","code":"40","name":"Romania","format":null},{"cc":"ru","code":"7","name":"Russian Federation","format":null},{"cc":"rw","code":"250","name":"Rwanda","format":null},{"cc":"bl","code":"590","name":"Saint Barth\u00e9lemy","format":null},{"cc":"sh","code":"290","name":"Saint Helena","format":null},{"cc":"kn","code":"1869","name":"Saint Kitts and Nevis","format":"XXX-XXXX"},{"cc":"lc","code":"1758","name":"Saint Lucia","format":"XXX-XXXX"},{"cc":"mf","code":"590","name":"Saint Martin","format":null},{"cc":"pm","code":"508","name":"Saint Pierre and Miquelon","format":null},{"cc":"vc","code":"1784","name":"Saint Vincent and the Grenadines","format":"XXX-XXXX"},{"cc":"ws","code":"685","name":"Samoa","format":null},{"cc":"sm","code":"378","name":"San Marino","format":null},{"cc":"st","code":"239","name":"Sao Tome and Principe","format":null},{"cc":"sa","code":"966","name":"Saudi Arabia","format":null},{"cc":"sn","code":"221","name":"Senegal","format":null},{"cc":"rs","code":"381","name":"Serbia","format":null},{"cc":"sc","code":"248","name":"Seychelles","format":null},{"cc":"sl","code":"232","name":"Sierra Leone","format":null},{"cc":"sg","code":"65","name":"Singapore","format":null},{"cc":"sk","code":"421","name":"Slovakia","format":null},{"cc":"si","code":"386","name":"Slovenia","format":null},{"cc":"sb","code":"677","name":"Solomon Islands","format":null},{"cc":"so","code":"252","name":"Somalia","format":null},{"cc":"za","code":"27","name":"South Africa","format":null},{"cc":"es","code":"34","name":"Spain","format":null},{"cc":"lk","code":"94","name":"Sri Lanka","format":null},{"cc":"sd","code":"249","name":"Sudan","format":null},{"cc":"sr","code":"597","name":"Suriname","format":null},{"cc":"sj","code":"47","name":"Svalbard and Jan Mayen","format":null},{"cc":"sz","code":"268","name":"Swaziland","format":null},{"cc":"se","code":"46","name":"Sweden","format":null},{"cc":"ch","code":"41","name":"Switzerland","format":null},{"cc":"sy","code":"963","name":"Syrian Arab Republic","format":null},{"cc":"tw","code":"886","name":"Taiwan","format":"XXX XXXXXX"},{"cc":"tj","code":"992","name":"Tajikistan","format":null},{"cc":"tz","code":"255","name":"United Republic Of Tanzania","format":null},{"cc":"th","code":"66","name":"Thailand","format":null},{"cc":"tl","code":"670","name":"Timor-Leste","format":null},{"cc":"tg","code":"228","name":"Togo","format":null},{"cc":"tk","code":"690","name":"Tokelau","format":null},{"cc":"to","code":"676","name":"Tonga","format":null},{"cc":"tt","code":"1868","name":"Trinidad and Tobago","format":"XXX-XXXX"},{"cc":"tn","code":"216","name":"Tunisia","format":null},{"cc":"tr","code":"90","name":"Turkey","format":null},{"cc":"tm","code":"993","name":"Turkmenistan","format":null},{"cc":"tc","code":"1649","name":"Turks and Caicos Islands","format":"XXX-XXXX"},{"cc":"tv","code":"688","name":"Tuvalu","format":null},{"cc":"ug","code":"256","name":"Uganda","format":null},{"cc":"ua","code":"380","name":"Ukraine","format":null},{"cc":"ae","code":"971","name":"United Arab Emirates","format":null},{"cc":"gb","code":"44","name":"United Kingdom","format":"XXX XXX XXXX"},{"cc":"us","code":"1","name":"United States","format":"(XXX) XXX-XXXX"},{"cc":"uy","code":"598","name":"Uruguay","format":null},{"cc":"uz","code":"998","name":"Uzbekistan","format":null},{"cc":"vu","code":"678","name":"Vanuatu","format":null},{"cc":"va","code":"379","name":"Vatican City State","format":null},{"cc":"ve","code":"58","name":"Venezuela","format":null},{"cc":"vn","code":"84","name":"Vietnam","format":null},{"cc":"vg","code":"1284","name":"British Virgin Islands","format":"XXX-XXXX"},{"cc":"vi","code":"1340","name":"U.S. Virgin Islands","format":"XXX-XXXX"},{"cc":"wf","code":"681","name":"Wallis and Futuna","format":null},{"cc":"eh","code":"212","name":"Western Sahara","format":null},{"cc":"ye","code":"967","name":"Yemen","format":null},{"cc":"zm","code":"260","name":"Zambia","format":null},{"cc":"zw","code":"263","name":"Zimbabwe","format":null},{"cc":"cw","code":"599","name":"Curacao","format":null},{"cc":"ss","code":"211","name":"South Sudan","format":null},{"cc":"sx","code":"1721","name":"Sint Maarten","format":null}]'
+        ),
+        country_code: "gb",
+        l10n: {
+          ModSqueezePageLPCCreatePageWebformWebformFieldsRequiredField:
+            "This\u0020information\u0020is\u0020required",
+          ModSqueezePageLPCCreatePageAutoFunnelProductsNotSelected:
+            "Please\u0020select\u0020a\u0020product",
+          ModSqueezePageLPCCreatePageAutoFunnelBtnProcessingCaption:
+            "Processing",
+          ModSqueezePageLPCCreatePageGrowlerErrorName: "Error",
+          ModSqueezePageLPCCreatePageGrowlerWarningName: "Warning",
+          ModSqueezePageLPCCreatePageGrowlerInfoName: "Info",
+          ModSqueezePageLPCCreatePageGrowlerSuccessName: "Success",
+          ModSqueezePageLPCFunnelConfirmationPageGoToURL: "Go\u0020to\u0020URL",
+          ModSqueezePageLPCFunnelConfirmationPageDownload: "Download",
+          ModSqueezePageLPCFunnelConfirmationPageProductDeliveryTokenTitle:
+            "Token\u0020to\u0020join\u003A",
+          ModSqueezePageLPCFunnelConfirmationPageJoinTheWebinar:
+            "Join\u0020the\u0020webinar",
+          ModSqueezePageLPCCreatePageInvalidDateFormat:
+            "We\u0020don\u0027t\u0020support\u0020this\u0020datetime\u0020format",
+          ModSqueezePageLPCCreatePageDatePlaceholder: "yyyy\u002Dmm\u002Ddd",
+          ModSqueezePageLPCFunnelOrderFormPaymentGrowlerNoPostalCodeError:
+            "We\u0027re\u0020sorry,\u0020but\u0020a\u0020postal\u0020code\u0020is\u0020required\u0020to\u0020complete\u0020this\u0020transaction.\u0020Please\u0020contact\u0020the\u0020vendor.",
+        },
+        thankyouurl: "https://sap-ap.cloudmantra.net/thank_you.html",
+        thankyoutext: "Thank you!" || "Thank you!",
+        url: "http://sap-ap.cloudmantra.net/",
+        url_to_old_mobile_styles:
+          "https://us-as.gr-cdn.com/javascripts/core/lps/dist/old-mobile-styles.13c25771a6f3d024d582.css",
+        url_product_box_default_image:
+          "https://sap-ap.cloudmantra.net/images/lps/img/productBoxDefaultImage.png",
+        cdn: "https://us-as.gr-cdn.com/",
+        webinars: {
+          settings: {
+            read: false,
+            write: false,
+          },
+          list: JSON.parse("" || null),
+        },
+        variantId: "zXkKJ",
+        webformApps: JSON.parse("[]"),
+        GDPRFields: JSON.parse("[]".replace(/\n/g, "\\n")),
+        isCustomCodeAllowed: true,
+        grBadge: JSON.parse('{"imageUrl":"","redirectUrl":""}') || {
+          imageUrl: "",
+          redirectUrl: "",
+        },
+        user_panel_lang: "en",
+        autoFunnel: {
+          autoFunnelType: null,
+          id: null,
+          stepId: null,
+          stepType: null,
+          orderFormUrl: null,
+          stripePaymentRequestButtonUrl: null,
+          paymentProcessor: null,
+          paymentProcessorToken: null,
+          paymentStripeAPIKey: null,
+          paymentStripeCountryCode: "" || "US",
+          processPaymentUrl: null,
+          autoFunnelPaymentStatusUrl: null,
+          cartId: null,
+          formFieldsValues: [],
+          boughtProducts: [],
+          autoFunnelPaymentSquareLocationId: null,
+          otoPageDismissUrl: null,
+          otoPageAcceptUrl: null,
+          enableOtoPageAction: "" === "true",
+        },
+        eCommerceData: {
+          shops: [],
+        },
+        crypto: "getresponse",
+        grChat: {
+          status: "disabled",
+          urlParams: null,
+        },
+        landingPageEncodedId: "hsKyE",
+        adsPixelId: null,
+        visitToken:
+          "def50200a8588c1f0f3f525f049a61d737f92ee021d024f549f68c78a6d7ee66df4ddba3596cf09a5e159db191d3851d44c39a19a2b0c5d8668410ac15dd97c08e62faf07b0e684645fe23e26802326ac9dcd42062f2c0f93fce39dfccd116eec25eee10e10801b3ba9d0000e3920048d665a1bc972c84e074d3be8b480d22978c8b68c464b62dff93df3af1483e3e25a1cb274e062ec6b186f46e3aca34e269e645b348cf",
+        isFreemium: null === "1",
+      };
+    </script>
+
+    <script type="text/javascript">
+      if (grLpsInitialData) {
+        grLpsInitialData.tracking_codes = {
+          google_analytics: [],
+          kiss_metrics: [],
+          yandex_metrica: [],
+          mixpanel: [],
+          vwo: [],
+          facebook_pixel: [],
+          bing_ads: [],
+          google_tag_manager: [],
+        };
+      } else {
+        var grLpsInitialData = {
+          tracking_codes: {
+            google_analytics: [],
+            kiss_metrics: [],
+            yandex_metrica: [],
+            mixpanel: [],
+            vwo: [],
+            facebook_pixel: [],
+            bing_ads: [],
+            google_tag_manager: [],
+          },
+        };
+      }
+    </script>
+  </head>
+
+  <body>
+    <section data-section="section" id="section-sknsr1b">
+      <div data-section="wrap" data-reverse="true">
+        <div
+          data-editable="text"
+          id="edi-zuncai4"
+          data-uid="edi-zuncai4"
+          class=""
+          data-draggable="true"
+        >
+          <div
+            style="font-size: 54px; font-weight: 700; color: rgb(161, 169, 173)"
+            class="text-content"
+            dir="auto"
+          >
+            <div style="font-size: 45px">
+              <font color="#ffffff"
+                >Intelligent Document Analysis for Accounts Payable</font
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          data-editable="text"
+          id="edi-fm6qxkb"
+          data-uid="edi-fm6qxkb"
+          class=""
+          data-draggable="true"
+        >
+          <div class="text-content" dir="auto">
+            <div>
+              <font color="#ffffff"
+                >Increase Operational Efficiency by over 90% by automating
+                Accounts Payables Process with Machine Learning Based Solution
+              </font>
+            </div>
+            <div>
+              <font color="#ffffff"><br /></font>
+            </div>
+          </div>
+        </div>
+        <div
+          data-editable="button"
+          id="edi-19w6yj2"
+          data-uid="edi-19w6yj2"
+          class=""
+          data-draggable="true"
+          data-initialized="true"
+          data-product-url=""
+        >
+          <a href="#section-4bki86n">
+            <button type="button">
+              <div>Live Demo</div>
+            </button></a
+          >
+        </div>
+        <div
+          data-editable="multimedia:image"
+          id="edi-4rbq3fr"
+          data-uid="edi-4rbq3fr"
+          class=""
+          data-draggable="true"
+          style="background: none"
+        >
+          <img
+            src="https://us-ms.gr-cdn.com/getresponse-yhHAU/photos/6e690452-65b0-496f-b494-5b8e9a5407fb.png"
+            alt=""
+            width="170"
+            height="120"
+          />
+        </div>
+      </div>
+    </section>
+
+    <div id="loader_properties">
+      <div class="loader"></div>
+    </div>
+    <section data-section="section" id="section-4bki86n">
+      <div
+        class="alert alert-success"
+        id="uploadSuccessMsg"
+        style="
+          margin: auto;
+          display: none;
+          text-align: center;
+          height: 20%;
+          width: 50%;
+          margin-top: -110px;
+        "
+      ></div>
+
+      <div
+        style="
+          display: inline-flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          width: 100%; /* align-content: center; */ /* width: 100%; */
+        "
+      >
+        <div
+          style="position: relative; top: 35px"
+          data-editable="webformNew"
+          data-label-type="placeholder"
+          id="edi-kuupt4n"
+          data-uid="edi-kuupt4n"
+          data-draggable="true"
+          data-blockeddrop="all"
+          data-height-setting="60"
+          class="row"
+        >
+          <form id="myForm" (ngSubmit)="onSubmit(myForm)">
+            <div
+              data-editable="webformNewItem"
+              data-item-type="webform_text"
+              data-item-name="email"
+              data-removable="false"
+              id="edi-hcdw9i7"
+              data-uid="edi-hcdw9i7"
+              data-draggable="true"
+              class=""
+              style="z-index: 4"
+            >
+              <div
+                data-editable-item="label"
+                id="webform_label-bryud5v"
+                data-uid="webform_label-bryud5v"
+                class=""
+              >
+                <!-- <label
+                  for="not_webform_label-bryud5v-for"
+                  style="font-size: 18px"
+                  >Your Email</label
+                > -->
+              </div>
+              <div
+                data-editable-item="field"
+                id="webform_text-0tqal7h"
+                data-uid="webform_text-0tqal7h"
+                class=""
+              >
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="off"
+                  id="webform_label-bryud5v-for"
+                  data-is-custom="false"
+                  data-ats-webform-field="email"
+                  tabindex="1"
+                  style="font-size: 18px"
+                  placeholder="Enter your email*"
+                />
+              </div>
+            </div>
+            <div
+              data-editable="webformNewItem"
+              data-item-type="webform_text"
+              data-item-name="first_name"
+              data-item-what="string"
+              id="edi-8vt072f"
+              data-uid="edi-8vt072f"
+              data-draggable="true"
+              class=""
+              style="z-index: 3"
+            >
+              <div
+                data-editable-item="label"
+                id="webform_label-ws0lwcd"
+                data-uid="webform_label-ws0lwcd"
+                class=""
+              >
+                <!-- <label
+                  for="not_webform_label-ws0lwcd-for"
+                  style="font-size: 18px"
+                  >First name</label
+                > -->
+              </div>
+              <div
+                data-editable-item="field"
+                id="webform_text-2n8mu4g"
+                data-uid="webform_text-2n8mu4g"
+                class=""
+              >
+                <input
+                  type="text"
+                  name="first_name"
+                  autocomplete="off"
+                  id="webform_label-ws0lwcd-for"
+                  data-is-custom="false"
+                  tabindex="2"
+                  data-ats-webform-field="first_name"
+                  style="font-size: 18px"
+                  placeholder="First name"
+                />
+              </div>
+            </div>
+            <div
+              data-editable="webformNewItem"
+              data-item-type="webform_text"
+              data-item-name="company"
+              data-item-what="string"
+              id="edi-fvb9cy7"
+              data-uid="edi-fvb9cy7"
+              data-draggable="true"
+              class=""
+              style="z-index: 2"
+            >
+              <div
+                data-editable-item="label"
+                id="webform_label-ywhch6b"
+                data-uid="webform_label-ywhch6b"
+                class=""
+              >
+                <!-- <label
+                  for="not_webform_label-ywhch6b-for"
+                  style="font-size: 18px"
+                  >Company</label
+                > -->
+              </div>
+              <div
+                data-editable-item="field"
+                id="webform_text-ca1lywf"
+                data-uid="webform_text-ca1lywf"
+                class=""
+              >
+                <input
+                  type="text"
+                  name="company"
+                  autocomplete="off"
+                  id="webform_label-ywhch6b-for"
+                  data-is-custom="true"
+                  tabindex="3"
+                  data-ats-webform-field="company"
+                  style="font-size: 18px"
+                  placeholder="Company name"
+                />
+              </div>
+            </div>
+            <div
+              data-editable="webformNewButton"
+              data-caption="Sign up!"
+              data-removable="false"
+              id="edi-isl6jvh"
+              data-uid="edi-isl6jvh"
+              data-draggable="true"
+              data-ats-form-button="submit"
+              style="z-index: 1"
+            >
+              <button type="submit" onclick="submitForm()">Submit</button>
+            </div>
+          </form>
+          <div
+            class="alert alert-success"
+            id="successMsg"
+            style="
+              margin-left: 12px;
+              display: none;
+              text-align: center;
+              height: 30%;
+            "
+          ></div>
+          <div
+            class="alert alert-danger"
+            id="errorMsg"
+            style="
+              margin-top: 84px;
+              margin-left: 19px;
+              display: none;
+              text-align: center;
+            "
+          ></div>
+          <div class="row" style="flex-direction: column">
+            <div
+              style="
+                width: 100%;
+                margin-top: 30px;
+                margin-left: 25px;
+                display: none;
+              "
+              id="otpSection"
+            >
+              <input
+                type="text"
+                style="font-size: 16px; height: 142%"
+                name="Enter OTP"
+                placeholder="Enter OTP"
+                id="enterOTP"
+              />
+              <button
+                onclick="submitOTP()"
+                type="submit"
+                style="width: 65%; font-size: 16px; margin-top: 5px"
+              >
+                Submit
+              </button>
+            </div>
+            <div
+              class="alert alert-danger"
+              id="otpErrorMsg"
+              style="
+                margin-top: 80px;
+                margin-left: 31px;
+                display: none;
+                text-align: center;
+                height: 25%;
+              "
+            ></div>
+          </div>
+        </div>
+
+        <!-----Second sections-------->
+
+        <div
+          class="row"
+          style="
+            opacity: 0.2;
+            pointer-events: none;
+            border: 1px solid;
+            margin-top: 100px;
+            margin-left: 70px;
+            padding: 25px 0px;
+            width: 30%;
+
+            display: block;
+          "
+          id="uploadImages"
+        >
+          <div id="upload-form" class="input-group fileInput">
+            <input
+              type="file"
+              class="form-control file-input"
+              name="file[]"
+              required
+              id="fileinput1"
+              accept=".png, .jpeg, .jpg, .pdf"
+              multiple="multiple"
+            />
+          </div>
+
+          <p
+            id="displayFileNames"
+            style="font-size: 13px; margin-bottom: 20px"
+          ></p>
+          <h6
+            id="noteText"
+            style="
+              font-weight: 500;
+              font-size: 11px;
+              margin-top: -15px;
+              margin-left: 10px;
+            "
+          >
+            *Note: Max file upload size should be less than 5 MB and you can
+            upload only maximum 5 flies. Only JPEG, PNG and PDF format
+            supported.
+          </h6>
+          <div
+            class="alert alert-success"
+            id="extractSuccessMsg"
+            style="
+              margin-left: 57px;
+              display: none;
+              text-align: center;
+              height: 35%;
+              width: 80%;
+              margin-top: -16px;
+            "
+          ></div>
+          <div class="input-group fileInput">
+            <input
+              type="submit"
+              value="Upload Image"
+              class="btn btn-primary"
+              id="submit1"
+              disabled
+              onclick="uploadFiles()"
+            />
+            <input
+              type="button"
+              value="Extract"
+              class="btn btn-outline-primary"
+              onclick="analyzeData()"
+              id="analyzeButton"
+              style="display: none"
+            />
+
+            <!-- <input
+              type="button"
+              value="Download"
+              class="btn btn-outline-primary"
+              onclick="download()"
+              id="downloadButton"
+              style="display: block"
+            />
+          
+           -->
+          </div>
+
+          <!-----Modal content------>
+
+          <div id="id01" class="modal">
+            <form class="modal-content" action="/action_page.php">
+              <span
+                onclick="document.getElementById('id01').style.display='none'"
+                class="close"
+                title="Close Modal"
+                >×</span
+              >
+              <div class="container">
+                <p id="ptag"></p>
+
+                <div class="clearfix">
+                  <button
+                    type="button"
+                    onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onclick="proceedButton()"
+                    class="proceedbtn"
+                    id=""
+                  >
+                    Proceed
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!----Downloading files-->
+
+        <div
+          class="row"
+          style="
+            opacity: 0.2;
+            pointer-events: none;
+            border: 1px solid;
+            margin-top: 100px;
+            margin-left: 70px;
+            padding: 25px 0px;
+            width: 30%;
+
+            display: block;
+          "
+          id="downloadImages"
+        >
+          <h6
+            id="noteText"
+            style="
+              font-weight: 500;
+              font-size: 12px;
+              margin-top: -15px;
+              margin-left: 10px;
+            "
+          >
+            Your files are ready for download.Please click on download button to
+            proceed.
+          </h6>
+          <div
+            class="alert alert-success"
+            id="extractSuccessMsg"
+            style="
+              margin-left: 57px;
+              display: none;
+              text-align: center;
+              height: 35%;
+              width: 80%;
+              margin-top: -16px;
+            "
+          ></div>
+          <div class="input-group fileInput">
+            <input
+              type="button"
+              value="Download"
+              class="btn btn-outline-primary"
+              onclick="download()"
+              id="downloadButton"
+              style="display: block"
+            />
+          </div>
+
+          <!-----Modal content------>
+
+          <div id="id01" class="modal">
+            <form class="modal-content" action="/action_page.php">
+              <span
+                onclick="document.getElementById('id01').style.display='none'"
+                class="close"
+                title="Close Modal"
+                >×</span
+              >
+              <div class="container">
+                <p id="ptag"></p>
+
+                <div class="clearfix">
+                  <button
+                    type="button"
+                    onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onclick="proceedButton()"
+                    class="proceedbtn"
+                    id=""
+                  >
+                    Proceed
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section data-section="section" id="section-d9pc8d2">
+      <div data-section="wrap" data-reverse="true">
+        <div
+          data-editable="text"
+          id="edi-ai2zbon"
+          data-uid="edi-ai2zbon"
+          class=""
+          data-draggable="true"
+        >
+          <div class="text-content" dir="auto">
+            Trigya Technologies (P) Limited
+          </div>
+        </div>
+        <div
+          data-editable="text"
+          id="edi-6u40bhz"
+          data-draggable="true"
+          data-uid="edi-6u40bhz"
+          class=""
+        >
+          <div class="text-content" autocomplete="off" dir="auto"></div>
+        </div>
+      </div>
+    </section>
+    <script src="https://us-as.gr-cdn.com/javascripts/core/lps/dist/manifest.86c981ff4636248e3a87.js"></script>
+    <script src="https://us-as.gr-cdn.com/javascripts/core/lps/dist/vendor.chunk.b68661c170ee7e096aab.js"></script>
+    <script src="https://us-as.gr-cdn.com/javascripts/core/lps/dist/show.chunk.ef126392368ecab3b194.js"></script>
+
+    <script type="text/javascript">
+      var fileUpload;
+      var email;
+      var count = 0;
+
+      var uploadCount;
+
+      function submitForm() {
+        document.querySelector("#loader_properties").style.display = "flex";
+        console.log(
+          "myForm",
+          myForm.email.value,
+          myForm.first_name.value,
+          myForm.company.value
+        );
+        email = myForm.email.value;
+        var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        var freeRegex =
+          /^[\w-\.]+@([hotmail+\.]|[yahoo+\.]|[gmail+\.])+[\w-]{2,4}$/;
+
+        if (!email.match(emailRegex)) {
+          document.querySelector("#loader_properties").style.display = "none";
+          alert("Please enter a valid email address");
+          return false;
+        } else if (email.match(freeRegex)) {
+          document.querySelector("#loader_properties").style.display = "none";
+          alert("You cannot use free email address!");
+          return false;
+        } else {
+          var data = new FormData();
+          data.append("email", myForm.email.value);
+          data.append("first_name", myForm.first_name.value);
+          data.append("company", myForm.company.value);
+
+          var xhr = new XMLHttpRequest();
+
+          xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4 && this.status === 200) {
+              console.log(this.responseText);
+              console.log("status", this.status);
+              if (this.responseText.includes("Email already exist")) {
+                // document.getElementById("errorMsg").style.display = "inline";
+                // document.getElementById("errorMsg").innerHTML =
+                //   "You have already used this service. Please reach out to us for more at 'info@cloudmantra.net'";
+                alert(
+                  "You have already used this service. Please reach out to us for more at 'info@cloudmantra.net'"
+                );
+                document.getElementById("successMsg").style.display = "none";
+                document.getElementById("otpSection").style.display = "none";
+                document.querySelector("#loader_properties").style.display =
+                  "none";
+              } else {
+                document.getElementById("successMsg").style.display = "inline";
+                document.getElementById("errorMsg").style.display = "none";
+                document.getElementById("successMsg").innerHTML =
+                  "OTP has been sent to your Email ID.";
+                document.getElementById("otpSection").style.display = "flex";
+                document.querySelector("#loader_properties").style.display =
+                  "none";
+                document.getElementById("myForm").style.display = "none";
+              }
+            } else if (this.readyState === 4 && this.status === 500) {
+              console.log("status", this.status, this.readyState);
+              alert("Request failed");
+              document.querySelector("#loader_properties").style.display =
+                "none";
+            }
+          });
+
+          xhr.open("POST", "http://127.0.0.1:5000/submit");
+          xhr.send(data);
+        }
+      }
+
+      function submitOTP() {
+        document.querySelector("#loader_properties").style.display = "flex";
+        console.log(document.getElementById("enterOTP").value, email);
+        var otp = document.getElementById("enterOTP").value;
+
+        var data = new FormData();
+        data.append("otp", otp);
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+            console.log("status", this.status);
+            if (this.responseText.includes("Incorrect OTP!!")) {
+              document.getElementById("otpErrorMsg").style.display = "inline";
+              document.getElementById("otpErrorMsg").innerHTML =
+                "Your OTP is incorrect!";
+              document.getElementById("successMsg").style.display = "none";
+              document.querySelector("#loader_properties").style.display =
+                "none";
+            } else {
+              document.querySelector("#loader_properties").style.display =
+                "none";
+
+              document.getElementById("otpSection").style.display = "none";
+              document.getElementById("successMsg").style.display = "none";
+              document.getElementById("myForm").style.display = "flex";
+
+              document.getElementById("edi-kuupt4n").style.display = "flex";
+              document.getElementById("edi-kuupt4n").style.opacity = "0.2";
+              document.getElementById("edi-kuupt4n").style.pointerEvents =
+                "none";
+              document.getElementById("uploadImages").style.opacity = "0.8";
+
+              document.getElementById("uploadImages").style.pointerEvents =
+                "visible";
+              document.getElementById("uploadImages").style.display = "flex";
+
+              // document.getElementById("otpSection").style.display = "none";
+              //  document.getElementById("otpErrorMsg").style.display = "none";
+            }
+          }
+        });
+
+        xhr.open(
+          "POST",
+          "http://127.0.0.1:5000/verify_otp?email=" + email
+        );
+
+        xhr.send(data);
+      }
+
+      $("#fileinput1").on("change", function () {
+        fileUpload = this.files;
+        console.log("File", fileUpload);
+        if (fileUpload) {
+          if (this.files.length > 0) {
+            $("#submit1").attr("disabled", false);
+          } else {
+            $("#submit1").attr("disabled", true);
+          }
+        }
+      });
+
+      // $("#submit1").click(function () {
+      //   var domArray = document.getElementsByClassName("file-input");
+      //   console.log("domArray", domArray);
+      //   var filesToUpload = "";
+      //   for (var i = 0; i < domArray.length; i++) {
+      //     var files = domArray[i].files;
+
+      //     for (var j = 0; j < files.length; j++) {
+      //       console.log("upload_files:-", files[j].name + "</br>");
+      //       $("#displayFileNames").append(files[j].name + "</br>");
+      //     }
+      //   }
+      //   document.querySelector("#loader_properties").style.display = "flex";
+      //   document.getElementById("uploadImages").style.display = "none";
+      //   document.getElementById("uploadSuccessMsg").innerHTML =
+      //     "Your files are being analyzed and information extracted";
+      //   document.getElementById("uploadSuccessMsg").style.display = "block";
+      //   console.log("file", fileUpload.length);
+      //   if (
+      //     (fileUpload.length <= 5 && count == 0) ||
+      //     (count != 0 &&
+      //       fileUpload.length <= 5 &&
+      //       fileUpload.length <= Number(5 - count))
+      //   ) {
+      //     var data = new FormData();
+      //     for (var i = 0; i < fileUpload.length; i++) {
+      //       data.append("image_name", fileUpload[i]);
+      //       console.log(data);
+      //     }
+
+      //     var xhr = new XMLHttpRequest();
+      //     xhr.addEventListener("readystatechange", function () {
+      //       console.log("readyState", this.readyState);
+
+      //       if (this.readyState === 4) {
+      //         console.log("res", this.responseText);
+      //         document.getElementById("analyzeButton").style.display = "";
+      //         document.getElementById("uploadImages").style.display = "";
+      //         document.querySelector("#loader_properties").style.display =
+      //           "none";
+      //         document.getElementById("uploadSuccessMsg").innerHTML = "";
+      //         document.getElementById("uploadSuccessMsg").style.display =
+      //           "none";
+      //         // document.getElementById("submit1").style.display = "none";
+      //         count += fileUpload.length;
+      //         console.log("count", count);
+      //         if (count >= 5) {
+      //           console.log("inside if loop");
+      //           $("#submit1").attr("disabled", true);
+      //           document.getElementById("fileinput1").style.display = "none";
+      //           document.getElementById("noteText").style.display = "none";
+      //         }
+      //       }
+      //     });
+      //     xhr.open(
+      //       "POST",
+      //       "https://ap-invoice.cloudmantra.in/upload_images?email=" + email
+      //     );
+      //     xhr.send(data);
+      //   } else if (fileUpload.length > 5) {
+      //     document.querySelector("#loader_properties").style.display = "none";
+      //     alert("Maxixum 5 files allowed");
+      //     document.getElementById("uploadImages").style.display = "";
+      //   } else if (fileUpload.length > Number(5 - count)) {
+      //     var fileCount = Number(5 - count);
+      //     document.querySelector("#loader_properties").style.display = "none";
+      //     document.getElementById("uploadImages").style.display = "";
+      //     alert("You can upload only " + fileCount + " more files(s).");
+      //   } else if (
+      //     fileUpload[0] ||
+      //     fileUpload[1] ||
+      //     fileUpload[2] ||
+      //     fileUpload[3] ||
+      //     fileUpload[4]
+      //   ) {
+      //     if (
+      //       (fileUpload[0].size / 1024 / 1024).toFixed(2) > 5 ||
+      //       (fileUpload[1].size / 1024 / 1024).toFixed(2) > 5 ||
+      //       (fileUpload[2].size / 1024 / 1024).toFixed(2) > 5 ||
+      //       (fileUpload[3].size / 1024 / 1024).toFixed(2) > 5 ||
+      //       (fileUpload[4].size / 1024 / 1024).toFixed(2) > 5
+      //     ) {
+      //       document.querySelector("#loader_properties").style.display = "none";
+      //       alert("File size must be of 5 MB");
+      //       document.getElementById("uploadImages").style.display = "";
+      //     }
+      //   }
+      // });
+
+      function analyzeData() {
+        document.querySelector("#loader_properties").style.display = "flex";
+        // document.getElementById("uploadImages").style.display = "none";
+        document.getElementById("uploadSuccessMsg").innerHTML =
+          "Your files are being analyzed and information extracted.";
+        document.getElementById("uploadSuccessMsg").style.display = "block";
+        console.log("file", fileUpload.length);
+        console.log("analyze");
+        var data = new FormData();
+        var xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log("res", this.responseText);
+
+            document.getElementById("uploadImages").style.opacity = "0.2";
+            document.getElementById("uploadImages").style.pointerEvents =
+              "none";
+
+            document.getElementById("downloadButton").style.display = "";
+
+            document.getElementById("downloadImages").style.opacity = "0.8";
+            document.getElementById("downloadImages").style.pointerEvents =
+              "visible";
+
+            document.querySelector("#loader_properties").style.display = "none";
+            document.getElementById("fileinput1").style.display = "none";
+            document.getElementById("noteText").style.display = "none";
+            // $("#submit1").attr("disabled", true);
+            // $("#analyzeButton").attr("disabled", true);
+            document.getElementById("submit1").style.display = "none";
+            document.getElementById("analyzeButton").style.display = "none";
+            document.getElementById("extractSuccessMsg").innerHTML =
+              "Your data has been extracted successfully, please download the file.";
+            document.getElementById("extractSuccessMsg").style.display =
+              "inline";
+            document.getElementById("displayFileNames").style.display = "none";
+            document.getElementById("uploadSuccessMsg").innerHTML = "";
+            document.getElementById("uploadSuccessMsg").style.display = "none";
+          }
+        });
+        xhr.open(
+          "GET",
+          "http://127.0.0.1:5000/analyze?email=" + email
+        );
+        xhr.send(data);
+      }
+
+      function download() {
+        document.querySelector("#loader_properties").style.display = "flex";
+        // document.getElementById("uploadImages").style.display = "none";
+        console.log("download");
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log("res", this.responseText);
+
+            document.querySelector("#loader_properties").style.display = "none";
+
+            document.getElementById("downloadImages").style.opacity = "0.2";
+            document.getElementById("downloadImages").style.pointerEvents =
+              "none";
+            document.getElementById("downloadImages").style.display = "flex";
+
+            // document.getElementById("myForm").style.display = "";
+            // document.getElementById("myForm").style.opacity = "0.2";
+            // document.getElementById("myForm").style.pointerEvents = "none";
+
+            document.getElementById("uploadImages").style.opacity = "0.2";
+            document.getElementById("uploadImages").style.pointerEvents =
+              "none";
+            document.getElementById("uploadImages").style.display = "flex";
+
+            document.getElementById("myForm").reset();
+            window.open(this.responseText);
+            output = this.responseText;
+          }
+        });
+        xhr.open(
+          "GET",
+          "http://127.0.0.1:5000/download?email=" + email
+        );
+        xhr.send();
+      }
+
+      function uploadFiles() {
+        console.log("file", fileUpload.length);
+        console.log("count", count);
+        uploadCount = 5 - count;
+        console.log("uploadCount", uploadCount);
+
+        if (fileUpload.length < 5 && count == 0) {
+          document.getElementById("id01").style.display = "block";
+          document.getElementById("ptag").innerHTML =
+            "You can add " +
+            Number(5 - fileUpload.length) +
+            " more files for Extraction.";
+        } else if (count != 0 && fileUpload.length < uploadCount) {
+          document.getElementById("id01").style.display = "block";
+          document.getElementById("ptag").innerHTML =
+            "You can add " +
+            Number(uploadCount - fileUpload.length) +
+            " more files for Extraction.";
+        } else {
+          proceedButton();
+        }
+      }
+      var files;
+      function proceedButton() {
+        console.log("proceed");
+        document.getElementById("id01").style.display = "none";
+        document.querySelector("#loader_properties").style.display = "flex";
+        document.getElementById("uploadImages").style.display = "none";
+
+        if (
+          (fileUpload.length <= 5 && count == 0) ||
+          (count != 0 &&
+            fileUpload.length <= 5 &&
+            fileUpload.length <= Number(5 - count))
+        ) {
+          var data = new FormData();
+          for (var i = 0; i < fileUpload.length; i++) {
+            data.append("image_name", fileUpload[i]);
+            console.log(data);
+          }
+
+          var xhr = new XMLHttpRequest();
+          xhr.addEventListener("readystatechange", function () {
+            console.log("readyState", this.readyState);
+
+            if (this.readyState === 4) {
+              var domArray = document.getElementsByClassName("file-input");
+              console.log("domArray", domArray);
+              var filesToUpload = "";
+              for (var i = 0; i < domArray.length; i++) {
+                files = domArray[i].files;
+
+                for (var j = 0; j < files.length; j++) {
+                  console.log("upload_files:-", files[j].name + "</br>");
+                  $("#displayFileNames").append(files[j].name + "</br>");
+                }
+              }
+              console.log("res", this.responseText);
+              document.getElementById("analyzeButton").style.display = "";
+              document.getElementById("uploadImages").style.display = "";
+              document.querySelector("#loader_properties").style.display =
+                "none";
+
+              // document.getElementById("submit1").style.display = "none";
+              count += fileUpload.length;
+              console.log("count", count);
+              if (count >= 5) {
+                console.log("inside if loop");
+                $("#submit1").attr("disabled", true);
+                document.getElementById("fileinput1").style.display = "none";
+                document.getElementById("noteText").style.display = "none";
+              }
+            }
+          });
+          xhr.open(
+            "POST",
+            "http://127.0.0.1:5000/upload_images?email=" + email
+          );
+          xhr.send(data);
+        } else if (fileUpload.length > 5) {
+          document.querySelector("#loader_properties").style.display = "none";
+          alert("Maxixum 5 files allowed");
+          document.getElementById("uploadImages").style.display = "";
+        } else if (fileUpload.length > Number(5 - count)) {
+          var fileCount = Number(5 - count);
+          document.querySelector("#loader_properties").style.display = "none";
+          document.getElementById("uploadImages").style.display = "";
+          alert("You can upload only " + fileCount + " more files(s).");
+        } else if (
+          fileUpload[0] ||
+          fileUpload[1] ||
+          fileUpload[2] ||
+          fileUpload[3] ||
+          fileUpload[4]
+        ) {
+          if (
+            (fileUpload[0].size / 1024 / 1024).toFixed(2) > 5 ||
+            (fileUpload[1].size / 1024 / 1024).toFixed(2) > 5 ||
+            (fileUpload[2].size / 1024 / 1024).toFixed(2) > 5 ||
+            (fileUpload[3].size / 1024 / 1024).toFixed(2) > 5 ||
+            (fileUpload[4].size / 1024 / 1024).toFixed(2) > 5
+          ) {
+            document.querySelector("#loader_properties").style.display = "none";
+            alert("File size must be of 5 MB");
+            document.getElementById("uploadImages").style.display = "";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

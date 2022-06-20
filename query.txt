@@ -1,0 +1,12 @@
+Create Database invoice_users;
+
+Create Table user_details (user_id varchar Primary Key, 
+						  email varchar Unique,
+						  first_name varchar,
+						  company_name varchar,
+						  otp_verified boolean default  False,
+						  download boolean default  False,
+						  output_key varchar,
+						  date_time varchar,
+						  otp integer);
+			  
