@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from flask.templating import render_template
 from flask import Flask, request, redirect, url_for,  Response , jsonify
 from flask import make_response
-# from trepan.api import debug
+from trepan.api import debug
 from flask_cors import CORS, cross_origin
 import logging
 from datetime import datetime
@@ -107,7 +107,7 @@ def index():
 ########################################################################################################
 # Get user details 
 
-@app.route('/submit', methods = ['GET', 'POST'])
+@app.route('/submit', methods = ['POST'])
 @cross_origin()
 def submit():
     
@@ -134,7 +134,6 @@ def verify_otp():
         
         user_otp = str(requests['otp'])
         dev_otp = str(row_dict['otp'])
-        print(dev_otp)
         if dev_otp == user_otp:
             session.query(user).filter(user.email ==email).update({'otp_verified':True})
             session.commit()
@@ -147,7 +146,7 @@ def verify_otp():
 #######################################################################################################
 # upload invoice images
 
-@app.route('/upload_images', methods = ['GET','POST'])
+@app.route('/upload_images', methods = ['POST'])
 @cross_origin()
 def home():
     if request.method == 'POST':       
@@ -167,9 +166,10 @@ def home():
         file_list = []
         for fl in upload_files:
             file_type = fl.filename.split('.')[-1]
+            file_name = fl.filename.split('.')[0]
             unique_filename = uuid.uuid4() #generate uuid
-            key = 'invoice_images/{}/{}.{}'.format(user_id, unique_filename,file_type) 
-            utils.upload_to_s3(fl, bucket_name, key, file_type)
+            key = 'invoice_images/{}/{}+{}.{}'.format(user_id, unique_filename,file_name, file_type) 
+            upload  = utils.upload_to_s3(fl, bucket_name, key, file_type)
             file_list.append(key)
     
     return jsonify({"message":"uploaded sucessfully."})
@@ -179,6 +179,7 @@ def home():
 
 @app.route('/analyze', methods = ['GET'])
 def analyze():
+    
     email = request.args.get('email')
     session = Session()
     row = db.session.query(user).filter(user.email == email).first()
@@ -193,8 +194,8 @@ def analyze():
         for object_summary in my_bucket.objects.filter(Prefix=folder):
             file_list.append(object_summary.key)
 
-        extracted_fields, cols = utils.process_text_detection(file_list, textract_client)
-        output_key = utils.csv_maker(extracted_fields, cols)
+        extracted_fields = utils.process_text_detection(file_list, textract_client)
+        output_key = utils.csv_maker(extracted_fields)
         
         session.query(user).filter(user.email ==email).update({'output_key':output_key})
         session.commit()
