@@ -133,8 +133,8 @@ def process_text_detection(files_list, client):
         df1 = pd.DataFrame.from_dict(dict2)
         df2 = get_table(response)
         df3= pd.concat([df1, df2], axis=1)
-        name = file.split('.')[0]
-        name1 = name.split('/')[-1]+'.csv'
+        name = file.split('+')[-1]
+        name1 = name.split('.')[0]+'.csv'
         csv = df3.to_csv(name1, index= False)
         list_df[name1] = csv
     return list_df
@@ -153,7 +153,7 @@ def csv_maker(list_df):
 
     s3.meta.client.upload_file(Filename = output_filename, Bucket= bucket_name, Key = zip_key)
     os.remove(output_filename)
-    return key    
+    return zip_key    
     
 ###############################################################################################
 # send otp

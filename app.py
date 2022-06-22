@@ -141,7 +141,7 @@ def verify_otp():
             return response
         else:
             response = jsonify({"message":"Incorrect OTP!!"})
-            return response
+    return response
 
 #######################################################################################################
 # upload invoice images
@@ -172,7 +172,7 @@ def home():
             upload  = utils.upload_to_s3(fl, bucket_name, key, file_type)
             file_list.append(key)
     
-    return jsonify({"message":"uploaded sucessfully."})
+        return jsonify({"message":"uploaded sucessfully."})
 
 ####################################################################################################
 #analyze uploaded images and write csv file
@@ -195,8 +195,11 @@ def analyze():
             file_list.append(object_summary.key)
 
         extracted_fields = utils.process_text_detection(file_list, textract_client)
+        print(extracted_fields)
+        print('********\n')
         output_key = utils.csv_maker(extracted_fields)
-        
+        print(output_key)
+        print('****\n')
         session.query(user).filter(user.email ==email).update({'output_key':output_key})
         session.commit()
         response = jsonify({"message":"Output is ready to download."})
@@ -215,15 +218,17 @@ def download():
         return jsonify({"message":"Invalid entry"})
     row_dict = row.__dict__
     download = row_dict['download']
+    
     if download == False:
         response = user.download_csv(email)
         session.query(user).filter(user.email ==email).update({'download':True})
         session.commit()
         return response
     else:
-        response = jsonify({"message":"already downloaded"})
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        return response
+        response1 = jsonify({"message":"already downloaded"})
+        response1.headers.add("Access-Control-Allow-Origin", "*")
+        return response1
+
 #########################################################################################
 
 if __name__  == '__main__':
