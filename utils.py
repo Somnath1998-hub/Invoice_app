@@ -107,6 +107,7 @@ def get_table(response):
         return df
     except:
         print("dataframe is not supported.")
+        pass
 
 
 ###############################################################################################
@@ -130,7 +131,12 @@ def process_text_detection(files_list, client):
         dict2 = {}
         for key, value in list(dict1.items()):
             dict2[key]=[value]
-        df1 = pd.DataFrame.from_dict(dict2)
+
+        file_name = {}
+        file_name['filename'] = file.split('+')[-1]
+        fields = {**file_name, **dict2}
+
+        df1 = pd.DataFrame.from_dict(fields)
         df2 = get_table(response)
         df3= pd.concat([df1, df2], axis=1)
         name = file.split('+')[-1]
@@ -143,13 +149,29 @@ def process_text_detection(files_list, client):
 # convert output into csv file and upload csv file to s3
 def csv_maker(list_df):
 
-    output_filename = str(uuid.uuid4())+ '.zip'
+# multiple csv file for multiple invoices 
+    # output_filename = str(uuid.uuid4())+ '.zip'
+    # zip_key = 'output_csv/'+ output_filename
+
+    # with ZipFile(output_filename, 'w') as zipObj2:
+    #     for key, value in list(list_df.items()):
+    #         zipObj2.write(key)
+    #         os.remove(key)
+
+# one csv file for multiple invoices 
+    output_filename = str(uuid.uuid4())+ '.csv'
     zip_key = 'output_csv/'+ output_filename 
 
-    with ZipFile(output_filename, 'w') as zipObj2:
-        for key, value in list(list_df.items()):
-            zipObj2.write(key)
-            os.remove(key)
+    output_file = open(output_filename, "a") 
+    for key, value in list(list_df.items()):
+        file = open(key, "r")
+        for line in file:
+            output_file.write(line)
+        output_file.write("\n")
+        file.close()
+        os.remove(key)
+    output_file.close()
+
 
     s3.meta.client.upload_file(Filename = output_filename, Bucket= bucket_name, Key = zip_key)
     os.remove(output_filename)
