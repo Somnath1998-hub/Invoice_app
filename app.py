@@ -195,11 +195,7 @@ def analyze():
             file_list.append(object_summary.key)
 
         extracted_fields = utils.process_text_detection(file_list, textract_client)
-        print(extracted_fields)
-        print('********\n')
         output_key = utils.csv_maker(extracted_fields)
-        print(output_key)
-        print('****\n')
         session.query(user).filter(user.email ==email).update({'output_key':output_key})
         session.commit()
         response = jsonify({"message":"Output is ready to download."})
