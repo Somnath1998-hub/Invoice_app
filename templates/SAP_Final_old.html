@@ -884,7 +884,6 @@
                   tabindex="1"
                   style="font-size: 18px"
                   placeholder="Enter your email*"
-                  required
                 />
               </div>
             </div>
@@ -926,8 +925,7 @@
                   tabindex="2"
                   data-ats-webform-field="first_name"
                   style="font-size: 18px"
-                  placeholder="First name*"
-                  required
+                  placeholder="First name"
                 />
               </div>
             </div>
@@ -969,8 +967,7 @@
                   tabindex="3"
                   data-ats-webform-field="company"
                   style="font-size: 18px"
-                  placeholder="Company name*"
-                  required
+                  placeholder="Company name"
                 />
               </div>
             </div>
@@ -1088,8 +1085,8 @@
               margin-left: 10px;
             "
           >
-            *Note: Max single file upload size should be less than 5 MB and you can
-            upload only maximum 5 flies. Only single page JPEG, PNG and PDF Invoice
+            *Note: Max file upload size should be less than 5 MB and you can
+            upload only maximum 5 flies. Only JPEG, PNG and PDF format
             supported.
           </h6>
           <div
@@ -1313,10 +1310,6 @@
           document.querySelector("#loader_properties").style.display = "none";
           alert("You cannot use free email address!");
           return false;
-        } else if (!myForm.first_name.value || !myForm.company.value) {
-          document.querySelector("#loader_properties").style.display = "none";
-          alert("Please enter all the details");
-          return false;
         } else {
           var data = new FormData();
           data.append("email", myForm.email.value);
@@ -1358,7 +1351,7 @@
             }
           });
 
-          xhr.open("POST", "https://ap-invoice.cloudmantra.in/submit");
+          xhr.open("POST", "http://127.0.0.1:5000/submit");
           xhr.send(data);
         }
       }
@@ -1408,7 +1401,7 @@
 
         xhr.open(
           "POST",
-          "https://ap-invoice.cloudmantra.in/verify_otp?email=" + email
+          "http://127.0.0.1:5000/verify_otp?email=" + email
         );
 
         xhr.send(data);
@@ -1558,7 +1551,7 @@
         });
         xhr.open(
           "GET",
-          "https://ap-invoice.cloudmantra.in/analyze?email=" + email
+          "http://127.0.0.1:5000/analyze?email=" + email
         );
         xhr.send(data);
       }
@@ -1595,7 +1588,7 @@
         });
         xhr.open(
           "GET",
-          "https://ap-invoice.cloudmantra.in/download?email=" + email
+          "http://127.0.0.1:5000/download?email=" + email
         );
         xhr.send();
       }
@@ -1676,7 +1669,7 @@
           });
           xhr.open(
             "POST",
-            "https://ap-invoice.cloudmantra.in/upload_images?email=" + email
+            "http://127.0.0.1:5000/upload_images?email=" + email
           );
           xhr.send(data);
         } else if (fileUpload.length > 5) {
